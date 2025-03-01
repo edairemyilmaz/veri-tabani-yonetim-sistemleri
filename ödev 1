@@ -1,0 +1,115 @@
+Çalışma Soruları
+
+1. Geleneksel dosyalama sistemlerinin çalışma şeklini açıklayarak bildiğiniz bir programlama 
+dili yardımıyla txt dosyadan veri okumak ve veri yazmak için bir uygulama geliştiriniz.
+-
+  PersonelID	Ad	     Soyad	  Pozisyon	       Maas	   IseBaslamaTarihi	  Departman	          Telefon
+    	1	      Ahmet	   Yılmaz	  Yazılım Müh.	   25000	  2022-06-15		     BT		              555-1234
+	    2      	Ayşe	   Demir	  Muhasebeci	     18000	  2021-03-10		     Finans		          555-5678
+	    3	      Mehmet	 Kaya	    İnsan Kay.Müd.	 22000	  2020-09-05		     İnsan Kaynakları   555-9101
+	    4	      Zeynep	 Çelik	  Satış Temsilcisi 17000	  2023-01-20		     Teknik		          555-2345
+
+ Açıklamalar
+ PersonelID: Onun kişisel için benzersiz bir kimlik numarasıdır .
+ AdveSoyad: Kişisel adı ve soyadı.
+ Pozisyon: Personelin şirket açıklaması.
+ Maas: Personelin aylık maaşı ( örneğin, TL cinsinden).
+ IseBaslamaTarihi: Çalışanın şirketine katıldığı tarih.
+ Departman: Çalıştığı departman.
+ Telefon: Personelin iletişim numarası.
+
+
+2. Geleneksel dosyalama sistemleriyle veritabanı yönetim sistemlerinin benzerlik ve 
+farklılıklarını açıklayınız.
+-Benzerlikleri: veri saklar, veri düzenler, verilere erişim sağlar.
+-Farklılıklar: Geleneksel Dosyalama Sistemi karışık, veri tekrarı olur, verilere ulaşmak için teker teker hepsi açılmalı.
+               VTYS düzenli, veri tekrarı önlenir, verilere sorgulama imkanı ile daha hızlı ulaşılır.
+
+
+3. VTYS'nin geleneksel sisteme göre üstün özelliklerini açıklayınız.
+-veri tekrarının önlenmesi, veri tutarlılığı, veri paylaşımı, veri bütünlüğü, veri güvenliği, veri bağımsızlığı.
+
+
+4. Veritabanının görevini açıklayarak kullanıldığı alanlara örnekler veriniz.
+- Görevi verileri toplar, saklar, düzenler, erişim sağlar.
+- Kullanıldığı alanlar: Eğitim, Sağlık, Sosyal Medya, Oyun, Devlet Kurumları.
+
+
+5. Tablo,satır ve sütun kavramlarını açıklayınız.
+-Tablo: verilerin depolandığı veritabanı elemanıdır.
+-Satır: tablo içerisinde sütuna ait veri grubu.
+-Sütun: veri türlerine verilen isimdir.
+
+
+6. Birincil anahtar ve yabancıl anahtar kavramlarını ve farklılıklarını açıklayınız.
+-Birincil anahtar: Tabloda tutulan verilerin benzersiz yani aynı değeri iki kez içermeyecek olan sütun 
+birincil anahtar olarak belirlenir.
+NULL değer içermez.
+tekrarlanamaz.
+
+-Yabancıl anahtar: Bir tabloyu başka bir tabloya bağlar, ilişki kurar.
+NULL değer içerebilir.
+tekrarlanabilir(aynı değer birden fazla satırda olabilir)
+
+
+7. Veritabanı kullanıcı türleri nelerdir?
+- Veri tabanı yöneticisi, uygulama programcıları, son kullanıcılar, sistem analitleri, 
+veri tabanı tasarımcıları, güvenlik yöneticileri. 
+
+
+8. Örnek bir veritabanı için kullanıcılar belirleyerek yetkilendirmelerini şematik olarak gösteriniz.
+- 1. Users (Kullanıcılar): Kullanıcı bilgilerini içerir.
+  2. Roles (Roller): Kullanıcıların sahip olduğu rolleri belirler (örn. Admin, Editör, Kullanıcı).
+  3. Permissions (İzinler): Hangi rollerin hangi işlemleri yapabileceğini tanımlar.
+  4. User_Roles: Kullanıcı ve roller arasındaki ilişkiyi gösterir (Çok-çok ilişki).
+  5. Role_Permissions: Roller ile izinler arasındaki ilişkiyi gösterir (Çok-çok ilişki).
+
+┌───────────────┐        ┌────────────┐        ┌───────────────┐
+│   Users       │        │  User_Roles│        │   Roles       │
+├───────────────┤        ├────────────┤        ├───────────────┤
+│ id (PK)       │◄──────►│ user_id    │        │ id (PK)       │
+│ name          │        │ role_id    │◄──────►│ role_name     │
+│ email         │        └────────────┘        └───────────────┘
+└───────────────┘                                   │
+                                                    ▼
+                                           ┌───────────────┐
+                                           │ Permissions   │
+                                           ├───────────────┤
+                                           │ id (PK)       │
+                                           │ permission    │
+                                           └───────────────┘
+                                                   ▲
+                                                   │
+                                           ┌───────────────┐
+                                           │Role_Permissions
+                                           ├───────────────┤
+                                           │ role_id       │
+                                           │ permission_id │
+                                           └───────────────┘
+
+
+9. Veritabanı ile VTYS'nin farkını açıklayınız.
+- Veritabanı sadece verileri saklar, VTYS ise yönetir ve sorgular.
+
+
+10. İlişkisel veri modelini açıklayınız.
+- Verileri tablolar halinde saklar. Anahtarlar kullanılarak tablolar arası ilişki kurulur.
+
+
+11. Bir öğrenci bilgi sistemi için kullanılacak veritabanı, tablolar ve tablolar arasındaki ilişkileri belirleyiniz.
+- Students (Öğrenciler):Öğrenci bilgilerini içerir.
+  Courses (Dersler): Üniversitedeki dersleri içerir.
+  Enrollments (Kayıtlar): Öğrencilerin aldığı dersleri gösterir.
+  Instructors (Eğitmenler): Dersleri veren öğretim görevlilerini içerir.
+  Departments (Bölümler): Öğrencilerin ve eğitmenlerin bağlı olduğu bölümleri içerir.
+  Grades (Notlar): Öğrencilerin derslerden aldığı notları içerir.
+  Users (Kullanıcılar): Sistem kullanıcılarını (öğrenci, öğretmen, yönetici) içerir.
+
+ Tablolar Arasındaki İlişkiler
+ Students ↔ Departments: Öğrenciler bir bölüme aittir (1-N).
+ Courses ↔ Departments: Dersler bir bölüm altında açılır (1-N).
+ Instructors ↔ Departments: Eğitmenler bir bölüme bağlıdır (1-N).
+ Courses ↔ Instructors: Bir dersin bir eğitmeni olur (1-1).
+ Students ↔ Courses (Enrollments): Öğrenciler birden fazla derse kayıt olabilir (N-N).
+ Students ↔ Grades: Öğrencilerin derslerden aldığı notlar bu tabloda tutulur (1-N).
+
