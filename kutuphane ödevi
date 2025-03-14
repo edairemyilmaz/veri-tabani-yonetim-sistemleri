@@ -39,7 +39,6 @@ kitapAdi nvarchar(100) not null,
 yayinTarihi nvarchar(100)
 );
 
-
 create table emanet(
 emanetNO int not null identity(1,1) Primary Key,
 emanetTarihi nvarchar(100),
@@ -48,3 +47,40 @@ uyeNo int Foreign Key (uyeNo) references uyeler(uyeNo),
 kutuphaneNo int Foreign Key (kutuphaneNo) references kutuphane (kutuphaneNo),
 ISBN int Foreign Key (ISBN) references kitaplar(ISBN)
 );
+
+create table yazarlar(
+yazarAdi nvarchar(20) not null,
+yazarSoyadi nvarchar(20) not null,
+yazarNo int not null identity(1,1) Primary Key
+);
+
+create table kategoriler(
+kategoriAdi nvarchar(20) not null,
+kategoriNo int not null identity(1,1) Primary Key
+);
+
+create table kitaplarKutuphane(
+miktar int,
+kutuphaneNO int ,
+ISBN int ,
+primary key(kutuphaneNO, ISBN),
+foreign key(kutuphaneNO) references kutuphane(kutuphaneNO) ,
+foreign key(ISBN) references kitaplar(ISBN),
+);
+
+create table kitaplarYazar(
+ISBN int ,
+yazarNo int ,
+primary key(ISBN, yazarNo),
+foreign key(ISBN) references kitaplar(ISBN) ,
+foreign key(yazarNo) references yazarlar(yazarNo),
+);
+
+create table kitaplarKategori(
+ISBN int ,
+kategoriNo int ,
+primary key(ISBN, kategoriNo),
+foreign key(ISBN) references kitaplar(ISBN) ,
+foreign key(kategoriNo) references kategoriler(kategoriNo),
+);
+
