@@ -1,0 +1,231 @@
+use kutuphane
+
+select * from  Adresler 
+select * from Kategori
+select * from kitaplar 
+select * from uyeler 
+select * from yazarlar 
+select * from kutuphane
+select * from emanet
+select * from Kategori_Kitap
+select * from Kitap_Kutuphane
+select * from Kitap_Yazarlar
+
+insert into Adresler values
+('Kayseri','15 Temmuz','Mevlana',12,38000,'Türkiye')
+insert into Adresler values
+('Ankara','Bağdat','Çankaya',7,06000,'Türkiye')
+insert into Adresler values
+('İstanbul','Beylikdüzü','15 Temmuz',15,34000,'Türkiye')
+insert into Adresler values
+('Sivas','Cumhuriyet','Yeni Mahalle',21,58000,'Türkiye')
+insert into Adresler values
+('Adana','İstiklal','Cebeci',19,01000,'Türkiye')
+insert into Adresler values
+('Antalya','Lara','Kaleiçi',3,07000,'Türkiye')
+insert into Adresler values
+('Muğla','Bodrum','Konacık',20,48000,'Türkiye')
+insert into Adresler values
+('Rize','Fevzi Çakmak','Çarşı',16,53000,'Türkiye')
+insert into Adresler values
+('Artvin','Cumhuriyet','Hopa',8,08000,'Türkiye')
+insert into Adresler values
+('Sakarya','Adapazarı','Erenler',24,54000,'Türkiye')
+
+
+insert into uyeler values
+('Eda İrem','Yılmaz','edairemylmz@gmail.com',5526542121 ,'K',4)
+insert into uyeler values
+('Selim','ÖZBAY','s_ozbay@miuul.com',5355906635 ,'E',5)
+insert into uyeler values
+('Mehmet Emir','SERÇE','m_emir@miuul.com',5362742960,'E',6)
+ insert into uyeler values
+('Sevda','AKÇAN','s_akcan@miuul.com',5425255514,'K',7)
+ insert into uyeler values
+('Tuğçe','AKKOÇ','t_akkoc@miuul.com',5434243115,'K',8)
+ insert into uyeler values
+('Arif','TEMELOĞLU','a_temeloglu@miuul.com',5545504524,'E',9)
+ insert into uyeler values
+('Ali Eymen','DEVE','a_eymen@miuul.com',5338082176,'E',10)
+ insert into uyeler values
+('Dilan','DOKUYUCU','d_dokuyucu@miuul.com',5388929868,'K',11)
+ insert into uyeler values
+('Naz','SAHAN','n_sahan@miuul.com',5417399820,'K',12)
+ insert into uyeler values
+('Cengiz','KAHVECİLER','c_kahveciler@miuul.com',5441878768,'E',13)
+
+
+insert into kitaplar values
+(9751000,409,'Çalıkuşu','1922')
+insert into kitaplar values
+(1234567,320,'Kürk Mantolu Madonna','1943')
+insert into kitaplar values
+(2345678,290, 'Saatleri Ayarlama Enstitüsü', '1961')
+insert into kitaplar values
+(3456789,480, 'Tutunamayanlar', '1971')
+insert into kitaplar values
+(4567890,360, 'Beyaz Kale', '1985')
+insert into kitaplar values
+(5678901,500, 'İnce Memed', '1955')
+insert into kitaplar values
+(6789012,275, 'Huzur', '1949')
+insert into kitaplar values
+(7890123,310, 'Anayurt Oteli', '1973')
+insert into kitaplar values
+(8901234,415, 'Fahrenheit 451', '1953')
+insert into kitaplar values
+(9012345,380, '1984', '1949')
+
+
+insert into Yazarlar values
+('Reşat Nuri','Güntekin')
+insert into Yazarlar values
+('Sabahattin','Ali')
+insert into Yazarlar values
+('Ahmet Hamdi','Tanpınar')
+insert into Yazarlar values
+('Ray','Bradbury')
+insert into Yazarlar values
+('Yaşar','Kemal')
+insert into Yazarlar values
+('Oğuz','Atay')
+insert into Yazarlar values
+('Yusuf','Atılgan')
+insert into Yazarlar values
+('Orhan','Pamuk')
+insert into Yazarlar values
+('George','Oewell')
+insert into Yazarlar values
+('Peyami','Safa')
+
+
+insert into Kategori values
+('Roman')
+insert into Kategori values
+('Şiir')
+insert into Kategori values
+('Tarih')
+insert into Kategori values
+('Felsefe')
+insert into Kategori values
+('Bilim Kurgu')
+insert into Kategori values
+('Kişisel Gelişim')
+insert into Kategori values
+('Polisiye')
+insert into Kategori values
+('Biyografi')
+insert into Kategori values
+('Psikoloji')
+insert into Kategori values
+('Çocuk Kitapları')
+
+
+insert into kutuphane values
+('Mavi Çınar','',4 )
+insert into kutuphane values
+('Milli Kütüphane','Türkiyenin en büyük kütüphanelerinden biri.',5 )
+insert into kutuphane values
+('Beyazıt Devlet Kütüphanesi','Osmanlı döneminden günümüze kadar gelen en eski kütüphanelerinden biri.',6 )
+insert into kutuphane values
+('Rami Kütüphanesi','',7 )
+insert into kutuphane values
+('Süleymaniye Kütüphanesi','',8 )
+insert into kutuphane values
+('Çınar Kütüphanesi','Kitap koleksiyonu ve eğitim kaynaklarıyla dikkat çeker.',9 )
+insert into kutuphane values
+('Kocatepe Kütüphanesi','Modern kütüphane hizmetleri sunar',10 )
+insert into kutuphane values
+('Fatih Belediyesi Kütüphanesi','',11 )
+insert into kutuphane values
+('Halk Kütüphanesi','Çeşitli etkinlikler ve okuma programları düzenlenir.',12 )
+insert into kutuphane values
+('Erciyes Kütüphanesi','',13 )
+
+
+insert into emanet values
+('1.03.2025','1.04.2025',10,1,1234567)
+insert into emanet values
+('2.03.2025','2.04.2025',11,3,2345678)
+insert into emanet values
+('3.03.2025','3.04.2025',12,4,3456789)
+insert into emanet values
+('4.03.2025','4.04.2025',13,5,4567890)
+insert into emanet values
+('5.03.2025','5.04.2025',14,6,5678901)
+insert into emanet values
+('6.03.2025','6.04.2025',15,7,6789012)
+insert into emanet values
+('7.03.2025','7.04.2025',16,8,7890123)
+insert into emanet values
+('8.03.2025','8.04.2025',17,9,8901234)
+insert into emanet values
+('9.03.2025','9.04.2025',18,10,9012345)
+insert into emanet values
+('10.03.2025','10.04.2025',19,11,9751000)
+
+
+insert into Kategori_Kitap values
+(1234567,1)
+insert into Kategori_Kitap values
+(2345678,2)
+insert into Kategori_Kitap values
+(3456789,3)
+insert into Kategori_Kitap values
+(4567890,4)
+insert into Kategori_Kitap values
+(5678901,5)
+insert into Kategori_Kitap values
+(6789012,6)
+insert into Kategori_Kitap values
+(7890123,7)
+insert into Kategori_Kitap values
+(8901234,8)
+insert into Kategori_Kitap values
+(9012345,9)
+insert into Kategori_Kitap values
+(9751000,10)
+
+
+insert into Kitap_Kutuphane values
+(1234567,1,5)
+insert into Kitap_Kutuphane values
+(2345678,3,7)
+insert into Kitap_Kutuphane values
+(3456789,4,3)
+insert into Kitap_Kutuphane values
+(4567890,5,6)
+insert into Kitap_Kutuphane values
+(5678901,6,4)
+insert into Kitap_Kutuphane values
+(6789012,7,7)
+insert into Kitap_Kutuphane values
+(7890123,8,9)
+insert into Kitap_Kutuphane values
+(8901234,9,10)
+insert into Kitap_Kutuphane values
+(9012345,10,4)
+insert into Kitap_Kutuphane values
+(9751000,11,2)
+
+
+insert into Kitap_Yazarlar values
+(1234567,1)
+insert into Kitap_Yazarlar values
+(2345678,2)
+insert into Kitap_Yazarlar values
+(3456789,3)
+insert into Kitap_Yazarlar values
+(4567890,4)
+insert into Kitap_Yazarlar values
+(5678901,5)
+insert into Kitap_Yazarlar values
+(6789012,6)
+insert into Kitap_Yazarlar values
+(7890123,7)
+insert into Kitap_Yazarlar values
+(8901234,8)
+insert into Kitap_Yazarlar values
+(9012345,9)
+insert into Kitap_Yazarlar values
+(9751000,10)
