@@ -1,0 +1,103 @@
+use galeri
+
+--1. Sıla Aydoğdu'ya satılan aracın aynısından başka hangi müşterilere satıldığını bulmak için kullanılacak SQL ifadesiniz yazınız.
+select (musteri.Madi +' '+ musteri.Msoyadi) as satilan_araclar
+from satislar
+Inner Join musteri on musteri.Mno = satislar.MNo
+where aracNo =
+(select AracNo from satislar
+where MNo =(select Mno from musteri 
+where Madi ='Sıla' and Msoyadi ='Aydoğdu'))
+
+--2. Satış yapılan araçların bilgilerini listelemek için gerekli SQL ifadesiniz yazınız.
+select musteri.Madi,araclar.marka,araclar.model,
+satislar.Fiyat from satislar
+inner join musteri on musteri.Mno = satislar.MNo
+inner join araclar on araclar.Aracno = satislar.AracNo
+where araclar.AracNo in (select AracNo from araclar)
+
+--3. Satış tutarı alım tutarından düşük olan araçları listelemek için gerekli SQL ifadesini yazınız.
+select s.Fiyat, a.Fiyat, m.Madi from satislar as s
+inner join alislar as a on a.AracNo=s.AracNo
+inner join musteri as m on m.Mno=s.MNo
+where s.Fiyat < a.Fiyat
+
+SELECT s.Fiyat AS satis, a.Fiyat AS alis,m.Madi
+FROM satislar AS s
+INNER JOIN alislar AS a ON a.AracNo = s.AracNo
+INNER JOIN musteri AS m ON m.Mno = s.MNo
+WHERE s.Fiyat < (
+    SELECT MIN(Fiyat) 
+    FROM alislar 
+);
+--4. Opel marka araç yapılan satışların ve alımların hangi müşterilerle yapıldığını bulmak için gerekli SQL ifadesini yazınız.
+select (musteri.Madi+' '+musteri.Msoyadi) as adSoyad
+from araclar
+inner join alislar on alislar.AracNo=araclar.Aracno
+inner join satislar on satislar.AracNo=araclar.Aracno
+inner join musteri on musteri.Mno=alislar.MNo  
+where araclar.marka='Opel'
+
+UNION
+
+select (musteri.Madi+' '+musteri.Msoyadi) as adSoyad
+from araclar
+inner join alislar on alislar.AracNo=araclar.Aracno
+inner join satislar on satislar.AracNo=araclar.Aracno
+inner join musteri on musteri.Mno=satislar.MNo
+where araclar.marka='Opel';
+
+--5. Araç fiyatı 20000 den yüksek olan araçların hangi fiyata satıldığını bulmak için gerekli SQL ifadesiniz yazınız.
+select DISTINCT satislar.Fiyat as satisFiyati,araclar.marka, araclar.model
+from satislar
+inner join araclar on araclar.Aracno=satislar.AracNo
+where araclar.fiyat > 20000;
+
+--6. Turhal ve Amasya’ya yapılan satışların toplam tutarını azalan sırada listelemek için gerekli SQL ifadesiniz yazınız.
+select musteri.Madres, SUM(satislar.Fiyat) as satisToplam
+from satislar
+inner join musteri on musteri.Mno=satislar.MNo
+where musteri.Madres='Turhal'
+group by musteri.Madres
+
+UNION
+
+select musteri.Madres, SUM(satislar.Fiyat) as satisToplam 
+from satislar
+inner join musteri on musteri.Mno=satislar.MNo
+where musteri.Madres='Amasya'
+group by musteri.Madres
+order by 2 desc;
+
+--7. Satış veya alım yapılmayan müşterilerin bilgilerini listelemek için gerekli SQL ifadesiniz yazınız.
+SELECT musteri.*
+FROM musteri
+LEFT JOIN alislar ON musteri.Mno = alislar.MNo
+LEFT JOIN satislar ON musteri.Mno = satislar.MNo
+WHERE alislar.MNo IS NULL or satislar.MNo IS NULL;
+
+--8. 5.ve 6. Ayda yapılan satışların kimlere yapıldığını bulmak için gerekli SQL ifadesiniz yazınız.
+select (musteri.Madi+' ' +musteri.Msoyadi) as adSoyad
+from satislar
+inner join musteri on musteri.Mno=satislar.MNo
+where MONTH( satislar.SatisTarihi)=5 or MONTH( satislar.SatisTarihi)=6;
+
+--9. Aynı marka araç alan müşterileri ve aldığı araç markasını listelemek için gerekli SQL ifadesiniz yazınız.
+SELECT musteri.Madi, musteri.Msoyadi, araclar.marka
+FROM musteri
+JOIN alislar ON musteri.Mno = alislar.MNo
+JOIN araclar ON alislar.AracNo = araclar.AracNo
+WHERE araclar.marka IN (
+    SELECT araclar.marka
+    FROM alislar
+    JOIN araclar ON alislar.AracNo = araclar.AracNo
+    GROUP BY araclar.marka
+    HAVING COUNT(DISTINCT alislar.MNo) > 1
+);
+
+--10. En yüksek fiyata satılan aracın marka, fiyat ve kime satıldığı bilgisini listelemek için gerekli SQL ifadesiniz yazınız.
+select  araclar.marka,satislar.fiyat, (musteri.Madi+' ' +musteri.Msoyadi) as adSoyad
+from satislar
+inner join araclar on araclar.Aracno=satislar.AracNo
+inner join musteri on musteri.Mno=satislar.MNo
+where satislar.fiyat=(select max(Fiyat) from satislar);
